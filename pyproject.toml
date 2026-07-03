@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spotify-code-generator"
+version = "0.1.0"
+description = "Generate Spotify Code URLs and images from Spotify links or URIs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Özge Çinko" }
+]
+keywords = ["spotify", "spotify-codes", "cli", "streamlit", "python"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.36.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+spotify-code = "spotify_code_generator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spotify_code_generator*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
